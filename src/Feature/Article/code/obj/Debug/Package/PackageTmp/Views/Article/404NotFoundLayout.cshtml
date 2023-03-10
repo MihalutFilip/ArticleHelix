@@ -1,0 +1,50 @@
+@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+
+@{
+
+    Layout = null;
+}
+
+
+@{
+    var cssItem = Sitecore.Context.Database.GetItem("{8C319E03-8D3E-471B-BD1D-25138BA424AD}");
+    var cssUrl = Sitecore.Resources.Media.MediaManager.GetMediaUrl(cssItem);
+}
+
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-theme.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="@cssUrl">
+    <title>Sitecore Powered Blog</title>
+    <style>
+        .heading-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+
+
+</head>
+<body style="background: black;">
+    <header>
+        @Html.Sitecore().Placeholder("header")
+    </header>
+
+    <main role="main" class="container blog-post-detail">
+        <h1 class="heading-title">Not Found 404</h1>
+    </main>
+
+    <Footer>
+        @Html.Sitecore().Placeholder("footer")
+    </Footer>
+</body>
+</html>
+

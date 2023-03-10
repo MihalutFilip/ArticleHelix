@@ -1,0 +1,145 @@
+@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+
+@{
+
+    Layout = null;
+}
+
+@{
+    //var item = Sitecore.Context.Database.GetItem("/sitecore/content/Alexa/Home/Settings/GlobalSettings");
+    //var ids = ["{F152ABED-A6C6-4F1B-9037-D40757C81B83}", "{4828875D-4E8D-4A88-9E84-413CEAC1EE7E}"];
+    var item1 = Sitecore.Context.Database.GetItem("{F152ABED-A6C6-4F1B-9037-D40757C81B83}");
+    var item2 = Sitecore.Context.Database.GetItem("{4828875D-4E8D-4A88-9E84-413CEAC1EE7E}");
+    var item3 = Sitecore.Context.Database.GetItem("{224AAF03-06CA-4DE5-BB39-A79ABB7206B8}");
+    var item4 = Sitecore.Context.Database.GetItem("{FBD12839-931E-475A-A2EB-4D738660A795}");
+    var item5 = Sitecore.Context.Database.GetItem("{A677442E-D14E-4CD3-B6B0-82C01DD9BEB5}");
+    var cssItem = Sitecore.Context.Database.GetItem("{8C319E03-8D3E-471B-BD1D-25138BA424AD}");
+    var cssUrl = Sitecore.Resources.Media.MediaManager.GetMediaUrl(cssItem);
+}
+
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-theme.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="@cssUrl">
+    <title>Sitecore Powered Blog</title>
+    <style>
+        .main-search {
+            width: 50%;
+            margin: 50px auto;
+        }
+
+        .has-search .form-control {
+            padding-left: 2.375rem;
+        }
+
+        .has-search .form-control-feedback {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 2.375rem;
+            height: 2.375rem;
+            line-height: 2.375rem;
+            text-align: center;
+            pointer-events: none;
+            color: #aaa;
+        }
+
+        .blog-post-card {
+            background: black;
+        }
+
+            .blog-post-card img {
+                width: 100%;
+                height: 100%;
+            }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            populateArticles();
+                $("#searchButton").click(function (e) {
+                    populateArticles();
+            });
+            });
+
+        function populateArticles() {
+            console.log(document.getElementById("searchInput").value)
+            $.ajax({
+                type: "GET", datatype: "JSON", url: "@Url.Action("SearchArticles", "Article")",
+                contentType: "application/json",
+                data: {
+                    searchText: document.getElementById("searchInput").value
+            },
+                success: function (result) {
+                    console.log(result);
+
+                    var resultText = "";
+                $('#resultsItem').text(resultText);
+                    $(result.Results).each(function (index, item) {
+
+                // each iteration
+                var Description = item.Description;
+                    var Title = item.Title;
+                    var Category = item.Category;
+                        var ItemName = item.ItemName;
+                        var Image = item.Image;
+                    var CreatedAt = new Date(parseInt(item.CreatedAt.replace(/[^0-9]/g, ""))).toLocaleDateString("en-US");
+                    resultText += `
+                        <div class="blog-post-card card col-lg-4 col-md-6">
+                            ` + Image + `
+                            <div class="card-body bg-light">
+                                <strong class="d-inline-block mb-2 text-success">` + Category + `</strong>
+                                <h3 class="card-title">` + Title + `</h3>
+                                <div class="mb-1 text-muted">` + CreatedAt + `</div>
+                                <p>` + Description + `</p>
+                                <a href="` + ItemName + `" class="btn btn-warning btn-block">Read on</a>
+                            </div>
+                        </div>
+                    `;
+            });
+                    $('#resultsItem').append(resultText);
+                },
+                error: function (result) {
+                alert('error');
+                }
+                });
+        }
+    </script>
+
+</head>
+<body style="background: black;">
+    <header>
+        @Html.Sitecore().Placeholder("header")
+    </header>
+    <main role="main" class="container blog-post-detail">
+        <main role="main" class="container blog-post-detail">
+            <div class="main-search">
+                <div class="input-group">
+                    <input id="searchInput" type="text" class="form-control" placeholder="Search this blog">
+                    <div class="input-group-append">
+
+                        <button type="button" class="btn btn-dark" id="searchButton">Search</button>
+
+                    </div>
+                </div>
+            </div>
+            <div id="resultsItem" class="row">
+            </div>
+        </main>
+
+        <Footer>
+            @Html.Sitecore().Placeholder("footer")
+        </Footer>
+</body>
+
+
+
+</html>
+

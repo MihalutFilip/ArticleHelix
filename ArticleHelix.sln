@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33328.57
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{6EB13F12-422F-40D4-9F66-927D646B315E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{6250982F-25B2-43FF-A778-B0138A3C91D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{6CC20960-A080-4FD3-938B-B9276F6C738C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FAQ", "FAQ", "{72514C56-8197-4C66-BEFA-3DD1358DC56E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleHelix.Feature.FAQ", "src\Feature\FAQ\code\ArticleHelix.Feature.FAQ.csproj", "{BFA5CBD3-D7C2-4F0E-979D-D3F1C476FEBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Article", "Article", "{C76FC6AD-C343-4DF8-8112-78B351C22C48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArticleHelix.Feature.Article", "src\Feature\Article\code\ArticleHelix.Feature.Article.csproj", "{472027A2-DC07-42CE-82AD-57B5DD28F6CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{3EB3D197-9DB2-4141-9DA5-1561F7C221DE}"
+	ProjectSection(SolutionItems) = preProject
+		gulp-config.js = gulp-config.js
+		gulpfile.js = gulpfile.js
+		package.json = package.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFA5CBD3-D7C2-4F0E-979D-D3F1C476FEBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFA5CBD3-D7C2-4F0E-979D-D3F1C476FEBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFA5CBD3-D7C2-4F0E-979D-D3F1C476FEBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFA5CBD3-D7C2-4F0E-979D-D3F1C476FEBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{472027A2-DC07-42CE-82AD-57B5DD28F6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{472027A2-DC07-42CE-82AD-57B5DD28F6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{472027A2-DC07-42CE-82AD-57B5DD28F6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{472027A2-DC07-42CE-82AD-57B5DD28F6CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{72514C56-8197-4C66-BEFA-3DD1358DC56E} = {6250982F-25B2-43FF-A778-B0138A3C91D3}
+		{BFA5CBD3-D7C2-4F0E-979D-D3F1C476FEBC} = {72514C56-8197-4C66-BEFA-3DD1358DC56E}
+		{C76FC6AD-C343-4DF8-8112-78B351C22C48} = {6250982F-25B2-43FF-A778-B0138A3C91D3}
+		{472027A2-DC07-42CE-82AD-57B5DD28F6CA} = {C76FC6AD-C343-4DF8-8112-78B351C22C48}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {102C37C9-E8E7-4E46-9803-9993F97CC814}
+	EndGlobalSection
+EndGlobal
