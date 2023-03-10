@@ -86,10 +86,10 @@
 
                 // each iteration
                 var Description = item.Description;
-                    var Title = item.Title;
-                    var Category = item.Category;
-                        var ItemName = item.ItemName;
-                        var Image = item.Image;
+                var Title = item.Title;
+                var Category = item.Category;
+                    var ItemName = item.ItemName;
+                    var Image = item.Image;
                     var CreatedAt = new Date(parseInt(item.CreatedAt.replace(/[^0-9]/g, ""))).toLocaleDateString("en-US");
                     resultText += `
                         <div class="blog-post-card card col-lg-4 col-md-6">
